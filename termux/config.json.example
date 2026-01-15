@@ -1,0 +1,9 @@
+{
+  "m3u_url": "SUA_URL_AQUI",
+  "m3u_file": "",
+  "paths": {
+    "canais": "/storage/emulated/0/Emby/canais",
+    "filmes": "/storage/emulated/0/Emby/filmes.strm",
+    "series": "/storage/emulated/0/Emby/series"
+  }
+}

@@ -1,0 +1,26 @@
+# IPTV Data (Large files)
+*.m3u
+*.m3u8
+
+# Credentials and Local Cache
+termux/config.json
+termux/sync.log
+
+# Generated folders
+output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Executables
+*.exe
+*.msi
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
