@@ -179,10 +179,14 @@ def load_m3u(source: str) -> Optional[str]:
             return None
     
     # Senão, tenta baixar da URL
-    print(f"�📥 Baixando lista M3U de: {source[:50]}...")
+    print(f"📥 Baixando lista M3U de: {source[:50]}...")
+    
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
     
     try:
-        response = requests.get(source, timeout=120, stream=True)
+        response = requests.get(source, timeout=120, headers=headers)
         response.raise_for_status()
         
         content = response.text
