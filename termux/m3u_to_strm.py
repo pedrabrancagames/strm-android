@@ -296,12 +296,7 @@ def generate_strm_files(items: List[Dict], config: Dict) -> Tuple[int, int, int]
                 skipped += 1
                 continue
             
-            # Verifica se já foi processado
-            if item["hash"] in processed:
-                skipped += 1
-                continue
-            
-            # Define caminho do arquivo
+            # Define caminho do arquivo (movido para antes do check de cache para conferir se o arquivo ainda existe no disco)
             if category == "series":
                 # Organiza em pasta da série/temporada
                 match = re.match(r'(.+?)\s*S(\d+)E(\d+)', item["name"], re.IGNORECASE)
@@ -345,6 +340,11 @@ def generate_strm_files(items: List[Dict], config: Dict) -> Tuple[int, int, int]
                     base_path,
                     f"{sanitize_filename(item['name'])}.strm"
                 )
+
+            # Verifica se já foi processado E se o arquivo ainda existe no disco
+            if item["hash"] in processed and os.path.exists(filepath):
+                skipped += 1
+                continue
             
             # Cria arquivo .strm
             if create_strm_file(filepath, item["url"]):
